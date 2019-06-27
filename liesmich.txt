@@ -1,0 +1,105 @@
+Google reCaptcha 3.4.0 für Zen Cart 1.5.6 deutsch
+
+Normalerweise reicht der in Zen Cart 1.5.6 deutsch integrierte Spamschutz zur Absicherung des Kontaktformulars aus.
+Sollten Sie über das Kontaktformular des Shops trotzdem Spam bekommen, dann können Sie es mit diesem Modul einfach mit einem zusätzlichen Google reCaptcha Version 2 ("Ich bin kein Roboter") absichern.
+Optional kann das reCaptcha auch auf den Seiten Registrierung und Artikelbewertung schreiben integriert werden, falls auch über diese Seiten Spamregistrierungen oder Spambewertungen kommen.
+
+Voraussetzung:
+kostenlose Registrierung auf
+https://www.google.com/recaptcha/admin
+
+
+Installation:
+
+1)
+Registrieren Sie die Domain des Shops zunächst bei Google reCaptcha:
+https://www.google.com/recaptcha/admin
+Wählen Sie dort als reCaptcha Typ die reCaptcha Version 2 aus und kreuzen Sie an:
+Kästchen "Ich bin kein Roboter."
+Anfragen über das Kästchen "Ich bin kein Roboter." validieren
+Sie bekommen dann Websiteschlüssel und Geheimen Schlüssel angezeigt
+
+2)
+Öffnen Sie die Datei includes/functions/extra_functions/recaptchalib.php im Ordner NEUE DATEIEN mit einem Texteditor und kopieren Sie Websiteschlüssel und Geheimen Schlüssel in die entsprechendne Definitionen in Zeile 9 und 10:
+
+Vorher:
+// Registrieren Sie Ihre Website zunächst auf https://www.google.com/recaptcha/admin für reCaptcha Version 2
+// Dann werden Ihnen Websiteschlüssel und Geheimer Schlüssel angezeigt, die Sie hier eintragen:
+// Websiteschlüssel
+$publickey = 'ENTER_YOUR_PUBLIC_KEY_HERE';
+// Geheimer Schlüssel
+$privatekey='ENTER_YOUR_SECRET_KEY_HERE';
+
+Nachher z.B.
+// Registrieren Sie Ihre Website zunächst auf https://www.google.com/recaptcha/admin reCaptcha Version 2
+// Dann werden Ihnen Websiteschlüssel und Geheimer Schlüssel angezeigt, die Sie hier eintragen:
+// Websiteschlüssel
+$publickey = '6Ld8kTcUBBBBBzfg6rtfghgdtT45d-bhAQer6';
+// Geheimer Schlüssel
+$privatekey='6Ld8zT67gfdreE-128zghTgyxIhg6rtbUpqrtz';
+
+3)
+Nun die Ordner/Dateien im Ordner NEUE DATEIEN in der vorgegebenen Struktur ins Shopverzeichnis hochladen, dabei werden keine bestehenden Dateien überschrieben.
+
+4)
+Laden Sie folgende Datei aus Ihrem Shopverzeichnis herunter:
+includes/templates/DEINTEMPLATE/templates/tpl_contact_us_default.php
+DEINTEMPLATE steht dabei für den Namen des im Shop aktiven Templates, z.B. responsive_classic
+Sollte diese Datei in Ihrem eigenen Templateverzeichnis nicht vorhanden sein, verwenden Sie
+includes/templates/template_default/templates/tpl_contact_us_default.php
+Dort wo das reCaptcha erscheinen soll (sinnvollerweise vor dem Button Absenden am Ende des Formulars) fügen Sie nun folgenden Code ein:
+
+<br class="clearBoth" />
+<div align="center"><?php echo recaptcha_get_html(false); ?></div>
+
+Typischerweise sieht die tpl_contact_us_default.php nach dieser Änderung in diesem Bereich also so aus:
+
+
+<label for="enquiry"><?php echo ENTRY_ENQUIRY; ?></label>
+<?php echo zen_draw_textarea_field('enquiry', '30', '7', $enquiry, 'id="enquiry" placeholder="' . ENTRY_REQUIRED_SYMBOL . '" required'); ?>
+<?php echo zen_draw_input_field('should_be_empty', '', ' size="40" id="CUAS" style="visibility:hidden; display:none;" autocomplete="off"'); ?>
+<br class="clearBoth" />
+<div align="center"><?php echo recaptcha_get_html(false); ?></div>
+</fieldset>
+
+Laden Sie nun die geänderte tpl_contact_us_default.php hoch nach includes/templates/DEINTEMPLATE/templates
+
+5)
+Auf der Kontaktseite sollten Sie nun das typische reCaptcha sehen (Ich bin kein Roboter), das angekreuzt werden muss, um das Kontaktformular absenden zu können.
+Testen Sie nun, ob Nicht Ankreuzen des reCaptcha das Absenden des Kontaktformulars verhindert und ob Ankreuzen es zulässt.
+
+OPTIONAL
+
+Sollten Sie das reCaptcha auch auf der Registrierungsseite verwenden wollen, öffnen Sie die includes/classes/observers/class.google_recaptcha.php mit einem Texteditor
+Entkommentieren Sie ca. Zeile 21:
+Von:
+//$pages_to_check[] =  'NOTIFY_CREATE_ACCOUNT_CAPTCHA_CHECK';
+auf:
+$pages_to_check[] =  'NOTIFY_CREATE_ACCOUNT_CAPTCHA_CHECK';
+Nun müssen Sie den Captchaaufruf auch noch zusätzlich in folgendes Template aufnehmen:
+includes/templates/DEINTEMPLATE/templates/tpl_modules_create_account.php
+Fügen Sie hier dann wieder das
+<?php echo recaptcha_get_html(false); ?>
+ein
+
+Sollten Sie das reCaptcha auch auf der Seite Bewertung schreiben verwenden wollen, öffnen Sie die includes/classes/observers/class.google_recaptcha.php mit einem Texteditor
+Entkommentieren Sie ca. Zeile 22:
+Von:
+//$pages_to_check[] =  'NOTIFY_REVIEWS_WRITE_CAPTCHA_CHECK';
+auf:
+$pages_to_check[] =  'NOTIFY_REVIEWS_WRITE_CAPTCHA_CHECK';
+Nun müssen Sie den Captchaaufruf auch noch zusätzlich in folgendes Template aufnehmen:
+includes/templates/DEINTEMPLATE/templates/tpl_product_reviews_write_default
+Fügen Sie hier dann wieder das
+<?php echo recaptcha_get_html(false); ?>
+ein
+
+
+
+
+
+
+
+
+
+
