@@ -1,0 +1,259 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Google reCaptcha v2 3.6.1 für Zen Cart 1.5.6 deutsch</title>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="content-language" content="de">
+<meta name="description" content="Google reCaptcha v2 für Zen Cart 1.5.6 deutsch">
+<link rel="stylesheet" type="text/css" href="includes/css/stylesheet.css">  
+<script type="text/javascript" src="includes/jscript/jscript_tabs.js"></script>
+</head>
+<body>
+<div id="wrapper">
+<div id="header">
+<h1>Google reCaptcha v2 3.6.1 für Zen Cart 1.5.6 deutsch</h1>
+</div>
+
+<div id="slidetabsmenu" style="display: none;">
+<ul>
+  <li> <a onClick="expandcontent('sc1', this)" href="javascript:void(0)"><span>Sinn und Zweck</span></a></li>
+  <li> <a onClick="expandcontent('sc2', this)" href="javascript:void(0)"><span>Installation</span></a></li>
+   <li> <a onClick="expandcontent('sc3', this)" href="javascript:void(0)"><span>Update</span></a></li>
+   <li> <a onClick="expandcontent('sc4', this)" href="javascript:void(0)"><span>Deinstallation</span></a></li>
+  <li> <a onClick="expandcontent('sc5', this)" href="javascript:void(0)"><span>Download & Support</span></a></li>
+  <li> <a onClick="expandcontent('sc6', this)" href="javascript:void(0)"><span>Unterstützen</span></a></li>
+ </ul>
+</div>
+<br style="clear: both;">
+
+<!--Begin tabcontainer-->
+<div id="tabcontentcontainer">
+
+<!--Begin sc1-->
+<div class="tabcontent" id="sc1" style="display: block;">
+<div class="textcontent">
+<div class="regularlist">
+
+<h2>Sinn und Zweck dieses Moduls</h2>
+
+  <p>Normalerweise reicht der in Zen Cart 1.5.6 deutsch integrierte Spamschutz zur Absicherung des Kontaktformulars aus.<br/>
+Sollten Sie über das Kontaktformular des Shops trotzdem Spam bekommen, dann können Sie es mit diesem Modul einfach mit einem zusätzlichen Google reCaptcha Version 2 ("Ich bin kein Roboter") absichern.<br/>
+Optional kann das reCaptcha auch auf den Seiten Registrierung und Artikelbewertung schreiben integriert werden, falls auch über diese Seiten Spamregistrierungen oder Spambewertungen kommen.
+<br/><br/>
+Version 3.6.1 verwendet gegenüber früheren Versionen dieses Moduls eine neue Dateistruktur und die neueste reCaptcha PHP library<br/>
+Da das reCaptcha nun nicht mehr via google.com aufgerufen wird, blockt diese Version auch Spammer, die von Rechnern z.B. aus China oder anderen Ländern operieren, in denen der Internetzugang zu google.com geblockt ist.<br/>
+Diese Version enthält auch Änderungen, die die Felder Name und Email befüllt lässt ("Sticky Fields") falls das Captcha nicht angekreuzt oder nicht bestanden wird, damit der Besucher nicht alles wieder neu eingeben muss.<br/>
+Außerdem neu in dieser Version: Captcha ist in mehrsprachigen Shops automatisch multilingual für alle von Google unterstützen Sprachen
+<br/><br/>
+<b>Voraussetzung:</b><br/>
+kostenlose Registrierung auf<br/>
+<a href="https://www.google.com/recaptcha/admin" target="_blank">https://www.google.com/recaptcha/admin</a><br/><br/>
+<b>Wichtiger Hinweis für Benutzer des bisherigen Moduls:</b><br/>
+Falls Sie bereits das reCaptcha Modul 3.4.0 und älter in Ihrem Zen Cart Shop verwenden, dann entfernen Sie es zunächst komplett, bevor Sie diese Version 3.6.1 installieren. Die Vorgangsweise zum Entfernen des alten Moduls ist unter "Update" beschrieben.
+</p>
+<br/>
+<h3>Copyright,  Lizenz, Changelog</h3>
+<p>Copyright dieser deutschen Anpassung/Anleitung für Zen Cart 1.5.6 deutsch<br>
+(c) 2016-2021 webchills (<a href="http://www.webchills.at" target="_blank">www.webchills.at</a>)<br>
+<br>
+Die reCaptcha Funktionalität für Zen Cart wurde entwickelt und erstmals integriert von:<br>
+  David Allen<br>
+  Anpassungen seitdem von:<br>
+  torvista</p>
+<p> Portions Copyright (c) 2003 osCommerce<br>
+  Portions Copyright     (c) 2003-2021 Zen Cart</p>
+<p>This contribution is subject to version 3.0 of the GPL license available through the world-wide-web at the following url:<br>
+  <a href="http://www.zen-cart-pro.at/license/3_0.txt">http://www.zen-cart-pro.at/license/3_0.txt</a></p>
+</div>
+</div>
+</div>
+<!--End sc1-->
+
+<!--Begin sc2-->
+<div class="tabcontent" id="sc2" style="display: block;">
+<div class="textcontent">
+<div class="regularlist">
+
+<h2>Installation</h2>
+<h3>Voraussetzungen</h3>
+  <br>
+  <p>Dieses Modul ist<strong> nur für Zen Cart 1.5.6 deutsch geeignet</strong> und ändert einige Corefiles.<br>
+    Die mitgelieferten geänderten Dateien sind auf dem Stand von 1.5.6f, bevor Sie Ihren 1.5.6 Shop also noch weiter modifizieren, stellen Sie erst sicher, dass Sie die neueste 1.5.6f Version verwenden und führen Sie falls nötig erst ein Update auf 1.5.6f durch.<br>
+    <br>
+    Für den Einbau dieses Moduls sollten Sie über folgende Werkzeuge verfügen:<br>
+  <br>
+    1) Ein guter Texteditor. <br>
+    Damit ist nicht das in Windows enthaltene Notepad oder Microsoft Word gemeint.<br>
+    Sie benötigen einen Texteditor, der utf-8 versteht und auch im Format utf-8 ohne BOM abspeichern kann.<br>
+    Meine Empfehlung: <a href="http://www.ultraedit.com/loc/de/index_de.html" target="_blank">UltraEdit</a> (kostenlose 30 Tage Testversion verfügbar)<br>
+    Ebenfalls gut geeignet ist der kostenlose Texteditor <a href="http://notepad-plus.sourceforge.net/de/site.htm" target="_blank">Notepad++ </a><br>
+  </p>
+  <p>2) Ein Tool zum Vergleichen von Dateien<br>
+    Bei der Installation dieses Moduls ist es erforderlich, dass Sie den   Inhalt einiger Ihrer bestehenden Zen Cart Dateien mit dem Inhalt der   neuen Moduldateien vergleichen und die Änderungen zusammenführen   ("mergen").<br>
+    Meine Empfehlung: <a href="http://www.scootersoftware.com/" target="_blank">BeyondCompare</a> (kostenlose 30 Tage Testversion verfügbar)<br>
+    Ebenfalls gut geeignet ist das kostenlose Programm <a href="http://winmerge.org/" target="_blank">WinMerge </a></p>
+  <p><br>
+  <strong>Empfehlung:</strong><br>
+  <br>
+  Dieses Modul erst in einem Testsystem einbauen und dort   konfigurieren/testen und endgültig an die eigenen Wünsche anpassen.        Erst dann in einem Liveshop einsetzen! Sichern Sie unbedingt alle   Dateien Ihres Shops per FTP und sichern Sie die Datenbank mit phpMyAdmin   oder anderen geeigneten Tools!</p>
+<div id="warning"><b>WICHTIG</b><br>
+Vor dem Einbau dieser Änderungen:<br>
+BACKUP von Shop und Datenbank machen! <br>
+Keine Haftung, Verwendung auf eigene Gefahr!<br>
+BACKUP gemacht? Ok, dann weiterlesen...
+</div>
+<p>Die Installation erfolgt in folgenden Schritten. Halten Sie diesen Ablauf ein!</p>
+<p>1)<br/>
+Falls Sie noch keine reCaptcha Registrierung haben, registrieren Sie die Domain des Shops zunächst bei Google reCaptcha:<br/>
+<a href="https://www.google.com/recaptcha/admin" target="_blank">https://www.google.com/recaptcha/admin</a><br/>
+Wählen Sie dort als reCaptcha Typ die reCaptcha Version 2 aus und kreuzen Sie an:<br/>
+Kästchen "Ich bin kein Roboter."<br/>
+Anfragen über das Kästchen "Ich bin kein Roboter." validieren<br/>
+Sie bekommen dann Websiteschlüssel und Geheimen Schlüssel angezeigt
+<br/><br/>
+2)<br/>
+Öffnen Sie die Datei includes/functions/extra_functions/functions_google_recaptcha.php im Ordner NEUE DATEIEN mit einem Texteditor und tragen Sie Domain, Websiteschlüssel und Geheimen Schlüssel in die entsprechende Definitionen in Zeile 18 ein:<br/><br/>
+domain: statt www.yoursite.com die Domain, auf der Ihr Shop läuft, z.B. www.meinshop.de<br/>
+sitekey: statt ENTER_YOUR_SITE_KEY_HERE den Websiteschlüssel<br/>
+privatekey: statt ENTER_YOUR_PRIVATE_KEY_HERE den geheimen Schlüssel<br/><br/>
+Zeile 18 sieht nach Ihrer Änderung also dann ca. so aus:<br/><br/>
+$reCaptchaKeys[] = ['domain' => 'www.meinshop.de', 'sitekey' => 'abc123abc123abc123', 'privatekey' => 'abc123abc123abc123'];
+</p>
+
+<p>3)<br/> Nach dieser Änderung nun alle Dateien/Ordner aus dem Ordner NEUE DATEIEN in der vorgegebenen Struktur in die Zen Cart Installation hochladen. <br>
+  Dabei werden keine bestehende Dateien überschrieben.<br><br/>
+4)<br>
+  Im Ordner GEAENDERTE DATEIEN den Ordner namens DEINTEMPLATE auf das im Shop verwendete Template umbennen, z.B. responsive_classic.<br>
+  <br>
+  Wenn Sie Zen Cart 1.5.6 gerade frisch installiert haben und noch keinerlei Änderungen an den Dateien vorgenommen haben, können Sie nun  alle Dateien/Ordner aus dem Ordner GEAENDERTE DATEIEN in der   vorgegebenen Struktur in die Zen Cart Installation hochladen. Dabei werden dann einige Dateien überschrieben.<br>
+  Wenn Sie Zen Cart 1.5.6 schon länger im Einsatz haben und schon einmal  Änderungen an Dateien vorgenommen oder andere Module eingebaut haben,  dann laden Sie die Dateien keinesfalls einfach hoch. <br>
+  Vergleichen Sie alle Dateien im Ordner GEAENDERTE DATEIEN mit den  entsprechenden Dateien in Ihrem Shop und nehmen Sie die Änderungen manuell per WinMerge oder BeyondCompare vor.<br>
+  Dann spielen Sie die geänderten Dateien in der gezeigten Struktur ein.</p>
+  
+<p>5)<br>
+  Prüfen Sie nun in Ihrem Shop, ob auf der Kontaktseite das reCaptcha erscheint und testen Sie die Funktionalität</p>
+  <p>6) OPTIONAL<br/>
+Sollten Sie das reCaptcha auch auf der Registrierungsseite und/oder beim Schreiben von Bewertungen verwenden wollen, sehen Sie sich in includes/functions/extra_functions/functions_google_recaptcha.php die Zeilen 22 bis 24 an:<br/><br/>
+const GOOGLE_RECAPCHTA_CONTACT_US = 'true';<br/>
+const GOOGLE_RECAPCHTA_CREATE_ACCOUNT = 'false';<br/>
+const GOOGLE_RECAPCHTA_REVIEWS = 'false';<br/><br/>
+Standardmäßig ist nur die Kontaktseite aktiviert, ändern Sie auch in Zeile 23 und 24 von false auf true, falls Sie auch dort reCaptcha nutzen wollen
+<br/><br/>
+Im Ordner OPTIONAL finden Sie im Ordner GEAENDERTE DATEIEN die Dateien, die zusätzlich für Registrierungsseite und Bewertungsseite geändert werden müssen.<br/>
+Im Ordner GEAENDERTE DATEIEN des Ordners OPTIONAL den Ordner namens DEINTEMPLATE auf das im Shop verwendete Template umbennen, z.B. responsive_classic.<br>
+  <br>
+  Wenn Sie Zen Cart 1.5.6 gerade frisch installiert haben und noch keinerlei Änderungen an den Dateien vorgenommen haben, können Sie nun  alle Dateien/Ordner aus dem Ordner GEAENDERTE DATEIEN in der   vorgegebenen Struktur in die Zen Cart Installation hochladen. Dabei werden dann einige Dateien überschrieben.<br>
+  Wenn Sie Zen Cart 1.5.6 schon länger im Einsatz haben und schon einmal  Änderungen an Dateien vorgenommen oder andere Module eingebaut haben,  dann laden Sie die Dateien keinesfalls einfach hoch. <br>
+  Vergleichen Sie nun alle Dateien im Ordner GEAENDERTE DATEIEN des Ordners OPTIONAL mit den  entsprechenden Dateien in Ihrem Shop und nehmen Sie die Änderungen manuell per WinMerge oder BeyondCompare vor.<br>
+  Dann spielen Sie auch diese geänderten Dateien in der gezeigten Struktur ein.
+</p>
+
+  </div>
+</div>
+</div>
+
+<!--End sc2-->
+
+<!--Begin sc3-->
+<div class="tabcontent" id="sc3" style="display: block;">
+<div class="textcontent">
+<div class="regularlist">
+
+<h2>UPDATE VON ÄLTEREN RECAPTCHA VERSIONEN</h2>
+<p>Falls Sie bereits das reCaptcha Modul 3.4.0 und älter in Ihrem Zen Cart Shop verwenden und auf 3.6.1 aktualisieren wollen, dann entfernen Sie das alte Modul zunächst komplett, bevor Sie diese Version 3.6.1 installieren:</p>
+<p>Löschen Sie folgende Dateien aus Ihrer Zen Cart Installation:</p>
+<p>includes/auto_loaders/config.google_recaptcha.php<br/>
+includes/classes/observers/class.google_recaptcha.php<br/>
+includes/classes/observers/google (gesamter Ordner)<br/>
+includes/functions/extra_functions/recaptchalib.php<br/>
+includes/languages/german/extra_definitions/reCaptcha.php<br/>
+includes/languages/english/extra_definitions/reCaptcha.php
+</p>
+<p>Machen Sie die Änderung rückgängig, die das alte Modul vorgenommen hat in:<br/>
+includes/templates/DEINTEMPLATE/templates/tpl_contact_us_default.php<br/>
+Entfernen Sie folgenden Eintrag aus dieser Datei:
+<br/>
+<code>&lt;?php echo recaptcha_get_html(false); ?&gt;</p></code>
+<p>Sollten Sie das reCaptcha auch für Registrierung und Bewertung schreiben verwendet haben, prüfen Sie nun noch folgende Dateien:<br/>
+includes/templates/DEINTEMPLATE/templates/tpl_modules_create_account.php<br/>
+includes/templates/DEINTEMPLATE/templates/tpl_product_reviews_write_default.php<br/><br/>
+Entfernen Sie folgenden Eintrag aus diesen Dateien:<br/>
+<code>&lt;?php echo recaptcha_get_html(false); ?&gt;</code>
+</p>
+<p>Prüfen Sie nun ob Kontaktseite, Bewertungsseite und Registierungsseite nun wieder problemlos ohne reCaptcha funktionieren</p>
+<p>Und dann gehen Sie so vor wie unter Neuisntallation beschrieben.</p>
+</div>
+</div>
+</div>
+<!--End sc3-->
+
+<!--Begin sc4-->
+<div class="tabcontent" id="sc4" style="display: block;">
+<div class="textcontent">
+<div class="regularlist">
+
+<h2>DEINSTALLATION</h2>
+<p>Alle von diesem Modul neu angelegten Dateien vom Server löschen.<br>
+  Alle von diesem Modul geänderten Dateien wieder mit den Originalversionen bzw. den Dateien Ihres Backups ersetzen.</p>
+</div>
+</div>
+</div>
+<!--End sc4-->
+
+<!--Begin sc5-->
+<div class="tabcontent" id="sc5" style="display: block;">
+<div class="textcontent">
+<div class="regularlist">
+<h2>Download &amp; Support</h2>
+<p>Download des Moduls:</p>
+<p><a href="https://www.zen-cart-pro.at/forum/vbdownloads.php?categoryid=16" target="_blank">www.zen-cart-pro.at/forum/vbdownloads.php?categoryid=16</a></p>
+
+<p>Supportforum zum Modul:</p>
+<p><a href="https://www.zen-cart-pro.at/forum/forums/90-CAPTCHA-Module" target="_blank">www.zen-cart-pro.at/forum/forums/90-CAPTCHA-Module</a></p>
+</div>
+</div>
+</div>
+<!--End sc5-->
+
+<!--Begin sc6-->
+<div class="tabcontent" id="sc6" style="display: block;">
+<div class="textcontent">
+<div class="regularlist">
+
+<h2>Unterstützen</h2>
+<p>Sie finden dieses Modul nützlich?</p>
+<p>Unterstützen Sie die Weiterentwicklung der deutschen Zen Cart Version.<br/>Wir freuen uns über Spenden zur Finanzierung des Servers und der vBulletin-Lizenz: </p>
+<p><a href="https://donorbox.org/spende-fur-die-weiterentwicklung-der-deutschen-zen-cart-version" target="_blank"><img src="https://www.zen-cart-pro.at/zencartpro-donation-white.png" alt="Spende für die Weiterentwicklung der deutschen Zen Cart Version" title="Spende für die Weiterentwicklung der deutschen Zen Cart Version"></a></p>
+<br/><br/>
+<p>Du bist Entwickler und willst helfen, die deutsche Zen Cart Version noch besser zu machen?<br>
+  Beteilige Dich auf Github:<br>
+  <a href="https://github.com/zencartpro" target="_blank"><strong>https://github.com/zencartpro</strong></a></p>
+<br/><br/>
+</div>
+</div>
+</div>
+<!--End sc6-->
+</div>
+<div id="footer">
+Ein Modul von <a href="https://www.zen-cart-pro.at" target="_blank">www.zen-cart-pro.at</a> - Die deutsche Zen Cart Version
+</div>
+</div>
+<!--end tabcontainer-->
+<script type="text/javascript">document.getElementById('sc1').style.display = 'none';</script>
+<script type="text/javascript">document.getElementById('sc2').style.display = 'none';</script>
+<script type="text/javascript">document.getElementById('sc3').style.display = 'none';</script>
+<script type="text/javascript">document.getElementById('sc4').style.display = 'none';</script>
+<script type="text/javascript">document.getElementById('sc5').style.display = 'none';</script>
+<script type="text/javascript">document.getElementById('sc6').style.display = 'none';</script>
+<script type="text/javascript">ShowTabs()</script>
+<script type="text/javascript">
+// We only show the tab links if JavaScript is available/active.
+<!--
+if (document.getElementById("slidetabsmenu") != null) {
+  document.getElementById('slidetabsmenu').style.display = "block";
+}
+//-->
+</script>
+
+</body></html>
