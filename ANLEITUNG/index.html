@@ -110,7 +110,8 @@ Falls Sie noch keine reCaptcha Registrierung haben, registrieren Sie die Domain 
 Wählen Sie dort als reCaptcha Typ die reCaptcha Version 2 aus und kreuzen Sie an:<br/>
 Kästchen "Ich bin kein Roboter."<br/>
 Anfragen über das Kästchen "Ich bin kein Roboter." validieren<br/>
-Sie bekommen dann Websiteschlüssel und Geheimen Schlüssel angezeigt
+Sie bekommen dann Websiteschlüssel und Geheimen Schlüssel angezeigt<br/><br/>
+Mit dem Schieberegler unter "Sicherheitspräferenz" können Sie einstellen wie streng das Captcha sein soll. Eine starke Ausrichtung zu "am sichersten" wird dazu führen, dass bloßes Anclicken der Checkbox meist nicht reichen wird und eine zusätzliche Bildauswahl im Stil von "Alle Fotos mit Hydranten" erscheinen wird.
 <br/><br/>
 2)<br/>
 Öffnen Sie die Datei includes/functions/extra_functions/functions_google_recaptcha.php im Ordner NEUE DATEIEN mit einem Texteditor und tragen Sie Domain, Websiteschlüssel und Geheimen Schlüssel in die entsprechende Definitionen in Zeile 18 ein:<br/><br/>
@@ -181,8 +182,8 @@ includes/templates/DEINTEMPLATE/templates/tpl_product_reviews_write_default.php<
 Entfernen Sie folgenden Eintrag aus diesen Dateien:<br/>
 <code>&lt;?php echo recaptcha_get_html(false); ?&gt;</code>
 </p>
-<p>Prüfen Sie nun ob Kontaktseite, Bewertungsseite und Registierungsseite nun wieder problemlos ohne reCaptcha funktionieren</p>
-<p>Und dann gehen Sie so vor wie unter Neuisntallation beschrieben.</p>
+<p>Prüfen Sie nun ob Kontaktseite, Bewertungsseite und Registrierungsseite nun wieder problemlos ohne reCaptcha funktionieren</p>
+<p>Und dann gehen Sie so vor wie unter Neuinstallation beschrieben.</p>
 </div>
 </div>
 </div>
